@@ -9,6 +9,10 @@ jobs:
   build-and-deploy:
     concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_GITHUB_REPOSITORY: ${{ github.repository }}
+      NEXT_PUBLIC_GITHUB_COMMIT_SHA: ${{ github.sha }}
+      NEXT_PUBLIC_GITHUB_COMMIT_REF: ${{ github.ref }}
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
